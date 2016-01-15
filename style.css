@@ -1,0 +1,16 @@
+body {
+	background: #f2f4f6;
+	font-family: 'Raleway', sans-serif;
+}
+
+iframe {
+	border:none;
+	overflow: hidden;
+	/*height: 720px;*/
+	max-height: 570px;
+	width: 100%!important;
+}
+
+.box-btn {
+	padding: 0 40px;
+}
