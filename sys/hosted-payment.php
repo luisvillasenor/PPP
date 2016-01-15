@@ -279,7 +279,7 @@ $json_resp = stripslashes(json_format($json_resp));
             var timeShopy = "<?php echo $timestampShopy; ?>";
             var signatureShopy = "<?php echo $signatureShopy; ?>";
             // end custom
-            var payURL = "ExecutePayment.php?access_token=" + access_token + "&payerId=" + payerId + "&paymentID=" + paymentID + "&paypalMode=" + paypalMode + "&redirectShopy=" + okShopy + "&accountID=" + acountShopy + "&reference=" + referenceShopy + "&currencyShopy=" + currencyShopy + "modeShopy=" + testShopy + "&amountShopy=" + amountShopy + "&gateRef=" + gateRefShopy + "&timeStamp" + timeShopy + "&signature=" + signatureShopy;
+            var payURL = "exepay.php?access_token=" + access_token + "&payerId=" + payerId + "&paymentID=" + paymentID + "&paypalMode=" + paypalMode + "&redirectShopy=" + okShopy + "&accountID=" + acountShopy + "&reference=" + referenceShopy + "&currencyShopy=" + currencyShopy + "modeShopy=" + testShopy + "&amountShopy=" + amountShopy + "&gateRef=" + gateRefShopy + "&timeStamp" + timeShopy + "&signature=" + signatureShopy;
             $('#payNowButton').prop('href', payURL);
             
             document.getElementById("installmentsJson").innerHTML = (term ? "<p><strong><code id='installmentsText'>"+ JSON.stringify(term) +"</code></strong></p>" : "No installments option selected");
