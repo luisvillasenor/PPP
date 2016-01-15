@@ -163,8 +163,8 @@ $json_resp = stripslashes(json_format($json_resp));
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,200' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="sys/Shop_files/index.css">
-    <link rel="shortcut icon" href="sys/Shop_files/pp_favicon_x.ico">
+    <link rel="stylesheet" type="text/css" href="Shop_files/index.css">
+    <link rel="shortcut icon" href="Shop_files/pp_favicon_x.ico">
 </head>
 
 <body>
