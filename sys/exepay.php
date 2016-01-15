@@ -102,7 +102,7 @@ $json_resp = stripslashes(json_format($json_resp));
                         echo '<h1>Transacción fallida</div>';
                         echo '<p>No hemos podido procesar tu pago</p>';
                         echo '<p>', $json_resp, '</p>';
-                        echo '<a href="#" class="cta-alpha">Descargar guía de integración</a>'
+                        echo '<a href="#" class="cta-alpha">Descargar guía de integración</a>';
                     }
 
                     // /thank_you
