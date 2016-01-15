@@ -154,77 +154,55 @@ $json_resp = stripslashes(json_format($json_resp));
 
 
 ?>
+
 <html>
 <head>
-
-    <meta charset="utf-8" />
+    <title>Paypal Plus pago directo con Tarjeta de Crédito / Débito</title>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Paypal Plus con Tarjeta de Crédito / Débito</title>
-
-    <link rel="stylesheet" type="text/css"
-        href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="Shop_files/shop.css" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="Shop_files/pp_favicon_x.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="sys/Shop_files/index.css">
+    <link rel="shortcut icon" href="sys/Shop_files/pp_favicon_x.ico">
 </head>
-<body id="debug">
-<div style="display: none;" id="paypal-config"
-    data-checkout="inline"
-    data-checkout-url="http://paypalplussampleshopbr-sandbox-9451.ccg21.dev.paypalcorp.com/PayPalPlusSampleShop-br/checkout-now"
-></div>
 
+<body>
 
+<form method="post" class="horizontal-form" action="?action=inline" id="checkout-form" onSubmit="return false;" data-checkout="inline">
 <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div id="box">
 
-<div class="row" style="">
-
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <div id="box">
-        
-        <div class="row">
-
-            <div class="col-xs-12">
-                <div style="text-align: center; margin-bottom:30px;">
-                    <img src="Shop_files/logo_gateway.png" alt="Shopify Plus // Tarjeta Débito y Crédito">
-                </div>
-            </div>
-
-            <form method="post" class="horizontal-form" action="?action=inline"
-                id="checkout-form" onSubmit="return false;"
-                data-checkout="inline">
-
-            <div class="col-xs-12">
-
-                <div id="resumen-order" style="margin-bottom:40px;">
-                    <div class="form-group" id="shipping-address-group">
-                        <h4 style="color:#575757; font-size:20px;">Resumen de su Pedido</h4>
-                        <table class="table table-striped" style="text-align:center; font-size:1em;">
-                            <thead>
-                                <tr>
-                                    <th style="color:#575757; text-align:center;">Tienda</th>
-                                    <th style="color:#575757; text-align:center;">Numero de Pedido</th>
-                                    <th style="color:#009cde; text-align:center;"><strong>Total</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><?php echo $shopName ?></td>
-                                    <td><?php echo $itemDescription ?></td>
-                                    <td style="color:#009cde;"><strong>$<?php echo $total ?> MXN</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="resumen">
+                    <div class="title">
+                        <span>Resumen de su Pedido</span>
                     </div>
+                    <table class="table table-striped" style="text-align:center; font-size:1em;">
+                        <thead>
+                            <tr>
+                                <th style="color:#575757; text-align:center;">Tienda</th>
+                                <th style="color:#575757; text-align:center;">Numero de Pedido</th>
+                                <th style="color:#009cde; text-align:center;"><strong>Total</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $shopName ?></td>
+                                <td><?php echo $itemDescription ?></td>
+                                <td style="color:#009cde;"><strong>$<?php echo $total ?> MXN</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div id="iframe-awesome">
-                    <h4 style="color:#575757; font-size:20px;">Ingresa los datos de su tarjeta</h4>
-
+                <div class="iframe-ppp">
+                    <div class="title">
+                        <span>Ingrese los datos de su tarjeta</span>
+                    </div>
+                    
                     <div id="psp-group">
-
                         <div id="pppDiv"> <!-- the div which id the merchant reaches into the clientlib configuration -->
                             <script type="text/javascript">
                                 document.write("iframe is loading...");
@@ -233,193 +211,23 @@ $json_resp = stripslashes(json_format($json_resp));
                                 <iframe src="https://www.paypalobjects.com/webstatic/ppplusbr/ppplusbr.min.js/public/pages/pt_BR/nojserror.html" style="max-height: 400px; border: none;"></iframe>
                             </noscript>
                         </div>
-
                     </div>
+
+                    <div id="final-cta">
+                        <button type="submit" id="continueButton" class="btn btn-lg btn-primary btn-block infamous-continue-button btn-paypal" onclick="ppp.doContinue(); return false;">
+                            Continuar
+                        </button>
+                        <a id="payNowButton" class="btn btn-lg btn-primary btn-block infamous-continue-button btn-paypal btn-redsito hidden" href="?action=commit">Pagar Ahora</a>
+                    </div>
+
                 </div>
 
             </div>
-
-            <div class="col-xs-12">
-                <p style="display:none"><strong>The outside continue button:</strong></p>
-                <button
-                  type="submit"
-                  id="continueButton"
-                  class="btn btn-lg btn-primary btn-block infamous-continue-button btn-paypal"
-                  onclick="ppp.doContinue(); return false;">
-                    
-                    Continuar
-                </button>
-                <a id="payNowButton" class="btn btn-lg btn-primary btn-block infamous-continue-button btn-paypal btn-redsito hidden" href="?action=commit">Pagar Ahora</a>
-            </div>
-
-        </div><!-- row inter -->
-        </div><!-- box -->
-
-        <footer>
-            <ul>
-                <li><a href="https://www.paypal.com/us/webapps/mpp/about" target="_blank">Acerca de PayPal</a></li>
-                <li><a href="https://www.paypal.com/selfhelp/home" target="_blank">Contactar</a></li>
-                <li><a href="https://www.paypal.com/mx/webapps/mpp/ua/privacy-full" target="_blank">Privacidad</a></li>
-                <li><a href="https://www.paypal.com/mx/webapps/mpp/ua/legalhub-full" target="_blank">Acuerdos legales</a></li>
-            </ul>
-        </footer>
-
-    </div>
-
-
-<?php /*
-<!-- Detalles de compra -->
-
-<div class="col-md-6">
-
-<h2>Detalles de Compra</h2>
-
-    <div class="form-group" id="shipping-address-group">
-        <label class="control-label">Carrito de Compra</label>
-        <table class="table table-striped">
-            <tr>
-                <td>Árticulo</td>
-                <td>Cantidad</td>
-                <td>Precio</td>
-                <td>Subtotal</td>
-            </tr>
-
-                <tr>
-                    <td><?php echo $itemName?></td>
-                    <td><?php echo $itemQuantity?></td>
-                    <td>$<?php echo $itemPrice?> MXN</td>
-                    <td>$<?php echo $total?> MXN</td>
-                </tr>
-        </table>
-        <label class="control-label">Total: <?php echo $total?> MXN</label>
-    </div>
-
-    <div class="form-group" id="shipping-address-group">
-        <label class="control-label">Dirección de Envío:</label>
-        <table class="table table-striped">
-            <tr>
-                <td>Nombre del destinatario:</td>
-                <td><?php echo $payerFirstName ." " . $payerLastName ?></td>
-            </tr>
-            <tr>
-                <td>Dirección 1:</td>
-                <td><?php echo $shippingAddressStreet1 ?></td>
-            </tr>
-            <tr>
-                <td>Direccion 2:</td>
-                <td><?php echo $shippingAddressStreet2 ?></td>
-            </tr>
-            <tr>
-                <td>Código Postal:</td>
-                <td><?php echo $shippingAddressPostal ?></td>
-            </tr>
-            <tr>
-                <td>Ciudad:</td>
-                <td><?php echo $shippingAddressCity ?></td>
-            </tr>
-            <tr>
-                <td>Estado:</td>
-                <td><?php echo $shippingAddressState ?></td>
-            </tr>
-            <tr>
-                <td>Código de País:</td>
-                <td><?php echo $shippingAddressCountry ?></td>
-            </tr>
-        </table>
-
-    </div>
-
-    <div class="form-group" id="shipping-options-group" style="display:none">
-        <label class="control-label">Shipping Options:</label>
-            <table class="table table-striped">
-                <tr>
-                    <td>express shipping:</td>
-                    <td>off</td>
-                </tr>
-            </table>
-
-    </div>
-
-    <br />
-
-</div>
-
-<!-- END Detalles de compra -->
-
-<!-- Iframe -->
-
-<div class="col-md-6">
-
-<h2>Ingresa los datos de su tarjeta</h2>
-
-<div class="form-group" id="psp-group">
-    <label class="control-label"></label>
-
-    <div class="panel">
-        <div class="panel-body">
-            <div id="pppDiv"> <!-- the div which id the merchant reaches into the clientlib configuration -->
-                <script type="text/javascript">
-                    document.write("iframe is loading...");
-                </script>
-                <noscript> <!-- in case the shop works without javascript and the user has really disabled it and gets to the merchant's checkout page -->
-                    <iframe src="https://www.paypalobjects.com/webstatic/ppplusbr/ppplusbr.min.js/public/pages/pt_BR/nojserror.html" style="height: 400px; border: none;"></iframe>
-                </noscript>
-            </div>
         </div>
     </div>
-
 </div>
+</form>
 
-
-</div>
-
-<!-- END Iframe -->
-
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <p style="display:none"><strong>The outside continue button:</strong></p>
-        <button
-          type="submit"
-          id="continueButton"
-          class="btn btn-lg btn-primary btn-block infamous-continue-button"
-          onclick="ppp.doContinue(); return false;">
-            
-            Continuar
-        </button>
-        <a id="payNowButton" class="btn btn-lg btn-primary btn-block infamous-continue-button hidden" href="?action=commit">Pagar Ahora</a>
-    </div>
-
-*/ ?>
-
-
-    </form>
-
-</div><!-- row -->
-
-<div style="display:none;">
-    <div class="col-md-12">
-    <hr />
-
-        <h2>Developer Info</h2>
-        <p><strong><code>The iframe response is : <code/><strong/></p>
-        <div id="installments" ></div>
-        <pre id="installmentsJson" class="json-data">{"result": "no data yet"}</pre>
-        <div id="responseDiv"></div>
-        <pre id="responseJson" class="json-data">{"result": "no data yet"}</pre>
-
-    <h3>General information</h3>
-
-    <p>The approval_url is:
-        <strong><code>https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;token=<?php echo $token;?></code></strong></p>
-    <p>The EC-Token is:
-        <strong><code><?php echo $token;?></code></strong></p>
-    <p>The Payment-ID is:
-        <strong><code><?php echo $paymentID;?></code></strong></p>
-
-    <h3>The payment created:
-    </h3>
-    <pre class="json-data"><?php echo $json_resp;?></pre>
-    </div>
-</div>
 <script src="<?php echo $ppplusJsLibraryUrl;?>"></script>
 <script>
 
@@ -468,10 +276,10 @@ $json_resp = stripslashes(json_format($json_resp));
             
             document.getElementById("installmentsJson").innerHTML = (term ? "<p><strong><code id='installmentsText'>"+ JSON.stringify(term) +"</code></strong></p>" : "No installments option selected");
            
-		    document.getElementById("responseJson").innerHTML = JSON.stringify('Success');
+            document.getElementById("responseJson").innerHTML = JSON.stringify('Success');
             if(rememberedCards) {
             
-			document.getElementById("responseDiv").innerHTML = "<p><strong><code>Transaction has been approved</code></strong></p>"+
+            document.getElementById("responseDiv").innerHTML = "<p><strong><code>Transaction has been approved</code></strong></p>"+
                 "<p><strong><code id='rememberedCardsText'>user token (remembered cards) = "+ rememberedCards +"</code></strong></p>";
 
             } else {
@@ -507,44 +315,6 @@ $json_resp = stripslashes(json_format($json_resp));
         
     });
 </script>
-
-<style>
-    .hidden {display:none;}
-</style>
-<div class="row" style="display:none">
-    <div class="col-md-12">
-    <hr />
-    <footer>PayPal Plus Sample Shop</footer>
-    </div>
-</div>
-
-
-<!--<div id="sessionInfoDrawer" class="closed">-->
-<!--    Session Info-->
-<!--</div>-->
-<!--<div id="sessionInfo">-->
-<!--    <div>-->
-<!---->
-<!--<h2>Current $_POST</h2>-->
-<!--<dl>-->
-<!--    <dt>--><!--</dt>-->
-<!--    <dd>--><!--</dd>-->
-<!--</dl>-->
-<!---->
-<!--<h2>Cookies</h2>-->
-<!--<dl>-->
-<!--    <dt>--><!--</dt>-->
-<!--    <dd>--><!--</dd>-->
-<!--</dl>-->
-<!---->
-<!--<h2>Session</h2>-->
-<!--<dl>-->
-<!--    <dt>--><!--</dt>-->
-<!--    <dd>--><!--</dd>-->
-<!--</dl>-->
-<!---->
-<!--    </div>-->
-<!--</div>-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
