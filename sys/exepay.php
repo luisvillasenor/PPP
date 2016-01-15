@@ -40,6 +40,7 @@ $json_resp = stripslashes(json_format($json_resp));
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,200' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="Shop_files/index.css">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="shortcut icon" href="Shop_files/pp_favicon_x.ico">
 </head>
 <body>
@@ -90,37 +91,27 @@ $json_resp = stripslashes(json_format($json_resp));
                     
 
                     if ($resP->state == 'approved') {
-                        echo 'Redireccionando...';
+                        echo '<h1>Transacción Exitosa</h1>';
+                        echo '<p>Redireccionando, espere un momento</p>';
                         //echo $urlFinal;
                         ////$until = substr($urlFinal, 0, strrpos($urlFinal, "/"));
                         //echo $until;
-                        echo '<script language="javascript">window.location="';
+                        echo '<script language="javascript">setTimeout(function(){ window.location="';
                         //echo $until;
                         echo 'https://paypalplusmx.herokuapp.com/sys/callback.php?x_complete=' . $urlFinal .'&x_account_id=' . $accountID . '&x_reference=' . $reference . '&x_amount=' . $amountShopy .'';
-                        echo '"</script>';
+                        echo '"}, 4000);</script>';
                     } else {
-                        echo '<h1>Transacción fallida</div>';
-                        echo '<p>No hemos podido procesar tu pago</p>';
-                        echo '<p>', $json_resp, '</p>';
-                        echo '<a href="#" class="cta-alpha">Descargar guía de integración</a>';
+                        echo '<script language="javascript">window.location="';
+                        echo 'https://paypalplusmx.herokuapp.com/error.html';
+                        echo '"</script>';
                     }
 
                     // /thank_you
                 ?>
-
-                <h1>Guía de instalación PayPal Plus</h1>
-                <p>Acepta pagos directos con tarjeta de débito/crédito con <a href="http://paypal.com.mx" target="_blank" title="PayPal.com">PayPal Plus</a> + <a href="http://shopify.com" target="_blank" title="Shopify - Tu tienda en linea">Shopify</a> </p>
-                <a href="#" class="cta-alpha" onclick="goBack()">Regresar</a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 
 </body>
 </html>
