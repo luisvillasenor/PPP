@@ -1,1 +1,1 @@
-<?php echo 'Works': ?>
+<?php echo 'Works'; ?>
