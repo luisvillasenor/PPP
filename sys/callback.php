@@ -1,4 +1,4 @@
-<?php
+<?php 
 	$curl_connection = curl_init('https://checkout.shopify.com/10163863/checkouts/d35c79939826456bcdcbc55b806047ae/offsite_gateway_callback');
 	
 	$x_callback_complete = $_GET['x_complete'];
