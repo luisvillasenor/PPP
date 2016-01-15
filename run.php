@@ -66,7 +66,7 @@
 <div class="row">
 
 
-<form id="paypalform" role="form" method="post" action="sys/ppp.php" class="form-horizontal" name="adjustConfiguration">
+<form id="paypalform" role="form" method="post" action="sys/hosted-payment.php" class="form-horizontal" name="adjustConfiguration">
 <div class="form-group pull-right">
     <a href="WebExperienceProfile.html" class="btn btn-primary" role="button">Crear o Consultar Experience Profile</a>
     <button type="submit" class="btn btn-primary">Go to checkout</button>

@@ -13,7 +13,7 @@ $currencyShopy = $_GET['currencyShopy'];
 $modeShopy = $_GET['modeShopy'];
 $amountShopy = $_GET['amountShopy'];
 $gateRef = $_GET['gateRef'];
-$timeStamp = $_GET['timeStamp'];
+$timeStamp = $_GET['timeStamp']; 
 $signature = $_GET['signature'];
 
 // end custom
