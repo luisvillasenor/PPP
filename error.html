@@ -25,7 +25,8 @@
 			<div id="middle-bar">
 				<h1>Transacción Fallida</h1>
 				<p>Lo sentimos, no hemos podido finalizar el proceso de pago. Ningun cargo ha sido aplicado a tu tarjeta.</p>
-				<a href="#" class="cta-alpha" onclick="goBack()">Intentar nuevamente</a>
+				<a href="#" class="cta-alpha" onclick="goBack()">Intentar nuevamente</a><br>
+				<a href="#" class="mini-cta" onclick="goBackCheck()">escoger otra forma de pago</a>
 			</div>
 		</div>
 	</div>
@@ -33,6 +34,9 @@
 
 <script>
 function goBack() {
+    window.history.go(-1);
+}
+function goBackCheck() {
     window.history.go(-2);
 }
 </script>
