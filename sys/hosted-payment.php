@@ -169,6 +169,14 @@ $json_resp = stripslashes(json_format($json_resp));
 
 <body>
 
+<header>
+    <div class="container">
+        <div class="col-xs-12">
+            <img src="Shop_files/logo_ppp.svg" alt="PayPal Plus México">
+        </div>
+    </div>
+</header>
+
 <form method="post" class="horizontal-form" action="?action=inline" id="checkout-form" onSubmit="return false;" data-checkout="inline">
 <div class="container">
     <div class="row">
