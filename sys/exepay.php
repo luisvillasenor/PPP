@@ -96,7 +96,7 @@ $json_resp = stripslashes(json_format($json_resp));
                         //echo $until;
                         echo '<script language="javascript">window.location="';
                         //echo $until;
-                        echo 'https://iceberg9.com/paypal/sys/callback.php?x_complete=' . $urlFinal .'&x_account_id=' . $accountID . '&x_reference=' . $reference . '&x_amount=' . $amountShopy .'';
+                        echo 'https://paypalplusmx.herokuapp.com/sys/callback.php?x_complete=' . $urlFinal .'&x_account_id=' . $accountID . '&x_reference=' . $reference . '&x_amount=' . $amountShopy .'';
                         echo '"</script>';
                     } else {
                         echo '<h1>Transacción fallida</div>';
